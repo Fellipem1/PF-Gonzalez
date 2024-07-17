@@ -1,0 +1,22 @@
+@media (max-width: 1000px) {
+    .sidebar {
+      display: none;
+    }
+  }
+  
+  @media (min-width: 1000px) {
+    .contenido h1 {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .contenido {
+      margin-left: 0px;
+      border-left: 0px;
+    }
+    .contenido p {
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+  }
