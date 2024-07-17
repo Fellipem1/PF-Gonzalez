@@ -10,7 +10,7 @@ Bienvenido a la página web de guías de PLCnext. Aquí encontrarás documentaci
 
 ## Version Web
 
-https://guiasplcnext.free.nf
+http://guiasplcnext.free.nf
 
 https://fellipem1.github.io/PF-Gonzalez/
 
