@@ -24,17 +24,13 @@
     <!-- Navegación -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary roboto-regular">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="./index.html">
                 <img src="./assets/images/imagenes/phoenix.svg" alt="PHOENIX CONTACT" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex w-100 justify-content-center my-2 my-lg-0" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscador" aria-label="Search">
-                    <button class="btn btn-outline-primary" type="submit">Buscar</button>
-                </form>
                 <ul class="navbar-nav w-100 mb-2 mb-lg-0 justify-content-end">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Inicio</a>
@@ -60,14 +56,14 @@
         </div>
     </nav>
     <!-- Main -->
-    <main>
+    <main class="select-guia">
         <section class="main-section roboto-regular">
             <div class="card text-bg-dark">
                 <img src="./assets/images/imagenes/imagen2-carrusel.jpg" class="card-img" alt="...">
                 <div class="card-img-overlay text-center">
                   <h1 class="card-title">Guías de PLCnext</h1>
                   <p class="card-text">En esta página encontraras todo tipo de guías de PLCnext</p>
-                  <div class="d-grid gap-2 d-md-block">
+                  <div class="d-grid gap-2 d-md-block button-select">
                     <a href="#selecciona-tu-guia" class="btn btn-primary">Ir a las guías</a>
                   </div>
                 </div>
@@ -79,9 +75,9 @@
             </div>
             <div class="container text-center my-4">
                 <div class="row justify-content-center">
-                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                    <div class="col-12 col-sm-6 col-md-4 mb-4 card-select-guia">
                     <article class="card card-custom">
-                        <img src="./assets/images/imagenes/plc.jpg" class="card-img-top" alt="..." data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+                        <img src="./assets/images/imagenes/plc-basico.png" class="card-img-top" alt="PLCnext Basico" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                         <div class="card-body">
                         <h5 class="card-title">Básicas</h5>
                         <p class="card-text">Guías básicas de PLCnext</p>
@@ -89,9 +85,9 @@
                         </div>
                     </article>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                    <div class="col-12 col-sm-6 col-md-4 mb-4 card-select-guia">
                     <article class="card card-custom">
-                        <img src="./assets/images/imagenes/plc.jpg" class="card-img-top" alt="..." data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+                        <img src="./assets/images/imagenes/plc-intermedio.png" class="card-img-top" alt="PLCnext Intermedio" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                         <div class="card-body">
                         <h5 class="card-title">Intermedias</h5>
                         <p class="card-text">Guías intermedias de PLCnext</p>
@@ -99,9 +95,9 @@
                         </div>
                     </article>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                    <div class="col-12 col-sm-6 col-md-4 mb-4 card-select-guia">
                     <article class="card card-custom">
-                        <img src="./assets/images/imagenes/plc.jpg" class="card-img-top" alt="..." data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+                        <img src="./assets/images/imagenes/plc-avanzado.png" class="card-img-top" alt="PLCnext Avanzado" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                         <div class="card-body">
                         <h5 class="card-title">Avanzadas</h5>
                         <p class="card-text">Guías avanzadas de PLCnext</p>
@@ -114,32 +110,31 @@
         </section>
     </main>
     <!-- Pie de página -->
-      <footer class="text-center roboto-regular">
-        <div class="container">
+      <footer class="section-footer text-center roboto-regular">
+        <div class="container section-footer-text">
             <div class="row">
               <div class="col-sm-4">
                 <h5>Información de contacto</h5>
                 <p>Teléfono: +56 9 XXXX XXXX</p>
                 <ul class="list-unstyled">
-                <li><a href="https://asistencia.pxc.cl/">Asistencia Tecnica</a></li>
+                <li><a href="https://asistencia.pxc.cl/" class="section-footer-text-link">Asistencia Tecnica</a></li>
                 </ul>
               </div>
               <div class="col-sm-4">
                 <h5>Proyectos</h5>
                 <ul class="list-unstyled">
-                  <li><a href="https://github.com/Fellipem1">Github</a></li>
+                  <li><a href="https://github.com/Fellipem1" class="section-footer-text-link">Github</a></li>
                 </ul>
               </div>
               <div class="col-sm-4">
                 <h5>Redes Sociales</h5>
                 <ul class="list-unstyled">
-                  <li><a href="https://www.linkedin.com/company/oktobertech/">Linkedin</a></li>
-                  <li><a href="#">Instagram</a></li>
+                  <li><a href="https://www.linkedin.com/in/felipegonzalezpoblete/" class="section-footer-text-link">Linkedin</a></li>
                 </ul>
               </div>
             </div>
+            <p>© 2024 Realizado por Felipe González.</p>
           </div>
-        <p>© 2024 Realizado por Felipe González.</p>
       </footer>
     <!-- Script -->
     <script src="./js/bootstrap.bundle.min.js"></script>
