@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import phoenixLogo from '../assets/images/imagenes/phoenix.svg';
 import CartWidget from './CartWidget';
+import { ShoppingCartContext } from '../context/ShoppingCart';
 
-const NavbarComponent = ({ itemCount }) => {
+const NavbarComponent = () => {
+  const { getTotalItems } = useContext(ShoppingCartContext);
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary roboto-regular">
       <div className="container-fluid">
@@ -45,7 +48,9 @@ const NavbarComponent = ({ itemCount }) => {
                 <li><Link className="dropdown-item" to="/category/marcaje">Marcaje</Link></li>
               </ul>
             </li>
-            <CartWidget itemCount={itemCount} />
+            <li className="nav-item">
+              <CartWidget itemCount={getTotalItems()} />
+            </li>
           </ul>
         </div>
       </div>
@@ -54,6 +59,10 @@ const NavbarComponent = ({ itemCount }) => {
 };
 
 export default NavbarComponent;
+
+
+
+
 
 
 

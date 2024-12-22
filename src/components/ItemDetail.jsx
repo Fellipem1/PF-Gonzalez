@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+// src/components/ItemDetail.jsx
+import React, { useState, useContext, useEffect } from 'react';
+import { ShoppingCartContext } from '../context/ShoppingCart';
+import ItemCount from './ItemCount';
 
-const ItemDetail = ({ product, addToCart }) => {
+const ItemDetail = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useContext(ShoppingCartContext);
 
-  const handleQuantityChange = (e) => {
-    const newQuantity = Math.max(1, parseInt(e.target.value, 10));
-    setQuantity(newQuantity);
-  };
+  useEffect(() => {
+    setQuantity(1);
+  }, [product]);
 
   const handleAddToCart = () => {
-    addToCart(product, quantity);
+    if (quantity <= product.quantity) {
+      addToCart(product, quantity);
+    } else {
+      alert('Cantidad no disponible en stock');
+    }
   };
 
   return (
@@ -23,17 +30,13 @@ const ItemDetail = ({ product, addToCart }) => {
           <h3>{product.name}</h3>
           <p>{product.description}</p>
           <p><strong>Precio: ${product.price}</strong></p>
-          
-          <div className="item-quantity-selector">
-            <button onClick={() => setQuantity(quantity - 1)} disabled={quantity <= 1}>-</button>
-            <input
-              type="number"
-              value={quantity}
-              onChange={handleQuantityChange}
-              min="1"
-            />
-            <button onClick={() => setQuantity(quantity + 1)}>+</button>
-          </div>
+          <p><strong>Disponibles: {product.quantity}</strong></p>
+
+          <ItemCount 
+            quantity={quantity} 
+            setQuantity={setQuantity} 
+            maxQuantity={product.quantity} 
+          />
 
           <button onClick={handleAddToCart} className="btn btn-primary">
             Agregar al carrito
@@ -45,6 +48,9 @@ const ItemDetail = ({ product, addToCart }) => {
 };
 
 export default ItemDetail;
+
+
+
 
 
 
