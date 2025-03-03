@@ -1,15 +1,43 @@
-<h1>Lista de Productos</h1>
-<ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Productos</title>
+</head>
+<body>
+
+  <h1>Lista de Productos</h1>
+
   {{#each products}}
-    <li>
-      <strong>ID: {{this.id}}</strong>
-      <br>Producto: {{this.title}} - ${{this.price}}
-      <br>Descripción: {{this.description}}
-      <br>Código: {{this.code}}
-      <br>Stock: {{this.stock}}
-      <br>Categoría: {{this.category}}
-    </li>
+    <div>
+      <strong>{{this.title}}</strong><br>
+
+
+      <a href="/products/{{this.id}}">Ver detalles</a><br>
+
+
+      <form action="/api/carts/{{../cartId}}/products/{{this.id}}" method="POST">
+
+        {{#if ../cartId}}
+          <button type="submit">Agregar al Carrito</button>
+        {{else}}
+          <button type="button" disabled>Carrito no disponible</button>
+        {{/if}}
+      </form>
+    </div>
   {{/each}}
-</ul>
+
+
+  <br>
+  <a href="/carts/{{cartId}}">
+    <button>Ver Carrito</button>
+  </a>
+
+</body>
+</html>
+
+
+
 
 

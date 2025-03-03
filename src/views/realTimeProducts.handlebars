@@ -1,34 +1,45 @@
-<h1>Real Time Products</h1>
-<ul id="productList"></ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Time Products</title>
+</head>
+<body>
 
-<h2>Agregar Producto</h2>
-<form id="productForm">
-  <input type="text" id="title" placeholder="Título" required>
-  <input type="text" id="description" placeholder="Descripción" required>
-  <input type="text" id="code" placeholder="Código" required>
-  <input type="number" id="price" placeholder="Precio" required>
-  <input type="number" id="stock" placeholder="Stock" required>
-  <input type="text" id="category" placeholder="Categoría" required>
-  <button type="submit">Agregar</button>
-</form>
+  <h1>Real Time Products</h1>
+  <ul id="productList"></ul>
 
-<h2>Eliminar Producto</h2>
-<form id="deleteForm">
-  <input type="text" id="productId" placeholder="ID del producto" required>
-  <button type="submit">Eliminar</button>
-</form>
+  <h2>Agregar Producto</h2>
+  <form id="productForm">
+    <input type="text" id="title" placeholder="Título" required>
+    <input type="text" id="description" placeholder="Descripción" required>
+    <input type="text" id="code" placeholder="Código" required>
+    <input type="number" id="price" placeholder="Precio" required>
+    <input type="number" id="stock" placeholder="Stock" required>
+    <input type="text" id="category" placeholder="Categoría" required>
+    <button type="submit">Agregar</button>
+  </form>
 
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  const socket = io();
+  <h2>Eliminar Producto</h2>
+  <form id="deleteForm">
+    <input type="text" id="productId" placeholder="ID del producto" required>
+    <button type="submit">Eliminar</button>
+  </form>
 
-  socket.on("productosActualizados", (productos) => {
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+   socket.on("productosActualizados", (productos) => {
+
+  if (Array.isArray(productos)) {
     const lista = document.getElementById("productList");
     lista.innerHTML = "";
     productos.forEach(producto => {
       const item = document.createElement("li");
       item.innerHTML = `
-        <strong>ID: ${producto.id}</strong>
+        <strong>ID: ${producto._id}</strong>  <!-- Asegúrate de que aquí usas _id -->
         <br>Producto: ${producto.title} - $${producto.price}
         <br>Descripción: ${producto.description}
         <br>Código: ${producto.code}
@@ -37,28 +48,34 @@
       `;
       lista.appendChild(item);
     });
-  });
+  } else {
+    console.error("Error: La respuesta no es un array", productos);
+  }
+});
 
-  document.getElementById("productForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const producto = {
-      id: Date.now().toString(),
-      title: document.getElementById("title").value,
-      description: document.getElementById("description").value,
-      code: document.getElementById("code").value,
-      price: parseFloat(document.getElementById("price").value),
-      status: true,
-      stock: parseInt(document.getElementById("stock").value),
-      category: document.getElementById("category").value
-    };
-    socket.emit("nuevoProducto", producto);
-  });
+
+    document.getElementById("productForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const producto = {
+        title: document.getElementById("title").value,
+        description: document.getElementById("description").value,
+        code: document.getElementById("code").value,
+        price: parseFloat(document.getElementById("price").value),
+        status: true,
+        stock: parseInt(document.getElementById("stock").value),
+        category: document.getElementById("category").value
+      };
+      socket.emit("nuevoProducto", producto);
+    });
 
   document.getElementById("deleteForm").addEventListener("submit", (e) => {
     e.preventDefault();
     const id = document.getElementById("productId").value;
     socket.emit("eliminarProducto", id);
   });
-</script>
+
+  </script>
+</body>
+</html>
 
 
